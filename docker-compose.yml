@@ -1,0 +1,7 @@
+services:
+    pivpn_webhook:
+        image: pivpn_webhook
+        container_name: pivpn_webhook
+        volumes:
+            - './data:/data_pivpn_webhook'
+        restart: unless-stopped
