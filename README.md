@@ -25,7 +25,7 @@ The python script in the docker container then read this files.
 This way we can have the script running in a docker container without affecting the host python environment
 
 ```bash
-*/3 * * * * /usr/local/bin/pivpn -c > ~/pivpn_webhook/data/pivpn_clients.log 2>&1
+*/2 * * * * /usr/local/bin/pivpn -c > ~/pivpn_webhook/data/pivpn_clients.log 2>&1
 ```
 additionally create a folder in the repository called data to save the logs
 

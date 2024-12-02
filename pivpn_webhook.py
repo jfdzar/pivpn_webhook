@@ -69,8 +69,8 @@ if __name__ == "__main__":
                 # Parse the last seen time
                 last_seen = datetime.strptime(last_seen_str, '%b %d %Y - %H:%M:%S')
 
-                # Check if the client was seen within the last 2 minutes
-                if datetime.now() - last_seen <= timedelta(minutes=3):
+                # Check if the client was seen within the last 5 minutes
+                if datetime.now() - last_seen <= timedelta(minutes=5):
                     if name not in connected_clients:
                         connected_clients.append(name)
                         logging.debug("New Client connected " + name)
