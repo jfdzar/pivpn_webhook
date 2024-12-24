@@ -49,20 +49,27 @@ if __name__ == "__main__":
 
             # Split the output into lines and process each line
             for line in output:
-
-                client_info = [x for x in line.split(' ') if x != '']
-                name = client_info[0]
-                remote_ip = client_info[1]
-                virtual_ip = client_info[2]
-                bytes_received = client_info[3]
-                bytes_sent = client_info[4]
-                last_seen_str = (
-                    client_info[5] + ' ' +
-                    client_info[6] + ' ' +
-                    client_info[7] + ' ' +
-                    client_info[8] + ' ' +
-                    client_info[9].strip()
-                )
+                try:
+                    client_info = [x for x in line.split(' ') if x != '']
+                    name = client_info[0]
+                    remote_ip = client_info[1]
+                    virtual_ip = client_info[2]
+                    bytes_received = client_info[3]
+                    bytes_sent = client_info[4]
+                    try:
+                        last_seen_str = (
+                            client_info[5] + ' ' +
+                            client_info[6] + ' ' +
+                            client_info[7] + ' ' +
+                            client_info[8] + ' ' +
+                            client_info[9].strip()
+                        )
+                    except:
+                        logging.debug('Error reading: '+ name +' probably not connected yet')
+                        continue
+                except:
+                    logging.debug('General error reading client - possible false line')
+                    continue
 
                 logging.debug(name + ' ' + last_seen_str)
 
